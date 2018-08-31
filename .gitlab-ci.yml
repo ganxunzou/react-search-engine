@@ -1,0 +1,4 @@
+ReleaseBook:
+ script:
+ - npm i 
+ - npm run build
