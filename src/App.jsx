@@ -6,8 +6,6 @@ import Home from './views/home';
 import Upload from './views/Upload';
 import SearchList from './views/searchlist';
 
-
-
 export default class App extends React.Component {
 	render() {
 		return (
