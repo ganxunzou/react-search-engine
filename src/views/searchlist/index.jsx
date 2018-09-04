@@ -147,11 +147,6 @@ class SearchList extends Component {
 		} = this.state;
 		return (
 			<Layout style={{ height: '100%' }}>
-				<Header className>
-					<div className={style.logo}>
-						<Link to="/">Search Engine</Link>
-					</div>
-				</Header>
 				<Layout>
 					<Sider
 						width={200}
