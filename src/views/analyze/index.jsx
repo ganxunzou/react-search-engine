@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Icon } from "antd";
 const { Sider, Content } = Layout;
 const { SubMenu } = Menu;
 class AnalyzeView extends Component {
 	render() {
 		return (
-			<Layout>
-				<Sider width={200} style={{ background: "#fff" }}>
+			<Layout style={{height: '100%', background: '#fff'}}>
+				<Sider width={200}>
 					<Menu
 						mode="inline"
 						defaultSelectedKeys={["1"]}
-						defaultOpenKeys={["sub1"]}
+						defaultOpenKeys={["sub1","sub2","sub3"]}
 						style={{ height: "100%", borderRight: 0 }}
 					>
 						<SubMenu
@@ -19,57 +19,50 @@ class AnalyzeView extends Component {
 							title={
 								<span>
 									<Icon type="user" />
-									subnav 1
+									用户
 								</span>
 							}
 						>
-							<Menu.Item key="1">option1</Menu.Item>
-							<Menu.Item key="2">option2</Menu.Item>
-							<Menu.Item key="3">option3</Menu.Item>
-							<Menu.Item key="4">option4</Menu.Item>
+							<Menu.Item key="1">在线用户</Menu.Item>
+							<Menu.Item key="2">用户活跃度</Menu.Item>
+							<Menu.Item key="3">文档分享概况</Menu.Item>
 						</SubMenu>
 						<SubMenu
 							key="sub2"
 							title={
 								<span>
-									<Icon type="laptop" />
-									subnav 2
+									<Icon type="file-word" />
+									文档
 								</span>
 							}
 						>
-							<Menu.Item key="5">option5</Menu.Item>
-							<Menu.Item key="6">option6</Menu.Item>
-							<Menu.Item key="7">option7</Menu.Item>
-							<Menu.Item key="8">option8</Menu.Item>
+							<Menu.Item key="5">文档概况</Menu.Item>
+							<Menu.Item key="6">下载概况</Menu.Item>
+							<Menu.Item key="7">部门提交概况</Menu.Item>
+							<Menu.Item key="8">部门好评文档概况</Menu.Item>
 						</SubMenu>
 						<SubMenu
 							key="sub3"
 							title={
 								<span>
-									<Icon type="notification" />
-									subnav 3
+									<Icon type="search" />
+									搜索
 								</span>
 							}
 						>
-							<Menu.Item key="9">option9</Menu.Item>
-							<Menu.Item key="10">option10</Menu.Item>
-							<Menu.Item key="11">option11</Menu.Item>
-							<Menu.Item key="12">option12</Menu.Item>
+							<Menu.Item key="9">热搜关键字</Menu.Item>
+							<Menu.Item key="10">热搜标签</Menu.Item>
 						</SubMenu>
 					</Menu>
 				</Sider>
-				<Layout style={{ padding: "0 24px 24px" }}>
-					<Breadcrumb style={{ margin: "16px 0" }}>
-						<Breadcrumb.Item>Home</Breadcrumb.Item>
-						<Breadcrumb.Item>List</Breadcrumb.Item>
-						<Breadcrumb.Item>App</Breadcrumb.Item>
-					</Breadcrumb>
+				<Layout style={{ padding: "0 0 0 1px" }}>
 					<Content
 						style={{
 							background: "#fff",
 							padding: 24,
 							margin: 0,
-							minHeight: 280
+							minHeight: 280,
+							height: '100%'
 						}}
 					>
 						Content

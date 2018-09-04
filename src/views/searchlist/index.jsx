@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
 	Layout,
 	Menu,
@@ -9,18 +9,18 @@ import {
 	Col,
 	Button,
 	Pagination
-} from 'antd';
+} from "antd";
 const { Header, Content, Sider } = Layout;
 const CheckBoxGroup = Checkbox.Group;
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
 
-import ListItem from '../../components/ListItem';
-import style from './index.less';
+import ListItem from "../../components/ListItem";
+import style from "./index.less";
 
 const searchKeyWords = [
-	{ label: 'PDF', type: 'pdf' },
-	{ label: 'word', type: 'word' },
-	{ label: 'excel', type: 'excel' }
+	{ label: "PDF", type: "pdf" },
+	{ label: "word", type: "word" },
+	{ label: "excel", type: "excel" }
 ];
 
 let allList = searchKeyWords.map(item => {
@@ -29,9 +29,9 @@ let allList = searchKeyWords.map(item => {
 
 const searchResult = [];
 for (let i = 0; i < 100; i++) {
-	let type = 'pdf';
-	if (i % 3 == 0) type = 'word';
-	if (i % 5 == 0) type = 'excel';
+	let type = "pdf";
+	if (i % 3 == 0) type = "word";
+	if (i % 5 == 0) type = "excel";
 
 	searchResult.push({
 		type,
@@ -41,7 +41,7 @@ for (let i = 0; i < 100; i++) {
 	});
 }
 
-const pageSize = 20;
+const pageSize = 10;
 
 class SearchList extends Component {
 	constructor(props) {
@@ -72,7 +72,7 @@ class SearchList extends Component {
 	};
 
 	filterSearchResult = checkedList => {
-		console.log('object', checkedList);
+		console.log("object", checkedList);
 		let isAllChecked = checkedList.length == searchKeyWords.length;
 		let isAllNotChecked = checkedList.length == 0;
 		let { searchResult } = this.state;
@@ -95,7 +95,7 @@ class SearchList extends Component {
 
 		this.setState({ searchFilterResult });
 
-		this.filterCurrentPageData(1,pageSize, searchFilterResult);
+		this.filterCurrentPageData(1, pageSize, searchFilterResult);
 	};
 
 	allCheckChange = e => {
@@ -131,7 +131,7 @@ class SearchList extends Component {
 
 	uploadClick = () => {
 		this.props.history.push({
-			pathname: '/upload',
+			pathname: "/upload",
 			state: {}
 		});
 	};
@@ -146,18 +146,18 @@ class SearchList extends Component {
 			currentPageIndex
 		} = this.state;
 		return (
-			<Layout style={{ height: '100%' }}>
+			<Layout style={{ height: "100%" }}>
 				<Layout>
 					<Sider
 						width={200}
 						style={{
-							background: '#fff',
-							paddingLeft: '10px',
-							borderRight: '1px solid #eee'
+							background: "#fff",
+							paddingLeft: "10px",
+							borderRight: "1px solid #eee"
 						}}
 					>
 						<Row
-							style={{ margin: '20px 0 50px 10px', width: '100%' }}
+							style={{ margin: "20px 0 50px 10px", width: "100%" }}
 							type="flex"
 							align="middle"
 						>
@@ -171,10 +171,10 @@ class SearchList extends Component {
 							</Button>
 						</Row>
 						<Row>
-							<Col span={24} style={{ padding: '10px 0 10px 10px' }}>
+							<Col span={24} style={{ padding: "10px 0 10px 10px" }}>
 								<h3>Document Type</h3>
 							</Col>
-							<Col span={24} style={{ padding: '10px 0 0 20px' }}>
+							<Col span={24} style={{ padding: "10px 0 0 20px" }}>
 								<Checkbox
 									checked={checkAll}
 									onChange={this.allCheckChange}
@@ -191,7 +191,7 @@ class SearchList extends Component {
 										return (
 											<Col
 												span={24}
-												style={{ padding: '10px 0 0 20px' }}
+												style={{ padding: "10px 0 0 20px" }}
 												key={`key_${index}`}
 											>
 												<Checkbox value={item.type}>{item.label}</Checkbox>
@@ -201,7 +201,7 @@ class SearchList extends Component {
 							</Row>
 						</CheckBoxGroup>
 					</Sider>
-					<Layout style={{ background: '#fff' }}>
+					<Layout style={{ background: "#fff" }}>
 						<Content>
 							<div className={style.search}>
 								<AutoComplete style={{ width: 400 }} />
@@ -210,7 +210,7 @@ class SearchList extends Component {
 								找到 {searchFilterResult.length} 条结果
 							</div>
 							<List
-								style={{ padding: '0 24px 24px' }}
+								style={{ padding: "0 24px 24px" }}
 								bordered={false}
 								dataSource={currentPageResult}
 								renderItem={item => (
@@ -220,6 +220,7 @@ class SearchList extends Component {
 								)}
 							/>
 							<Pagination
+								style={{ padding: "0 24px" }}
 								pageSize={pageSize}
 								defaultCurrent={currentPageIndex}
 								total={searchFilterResult.length}

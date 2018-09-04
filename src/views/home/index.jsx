@@ -185,8 +185,9 @@ class Home extends Component {
 									size="large"
 									style={{ width: "100%" }}
 									dataSource={options}
-									placeholder="input here"
+									placeholder="请输入查询关键字"
 									optionLabelProp="value"
+									onSelect={this.onSelect}
 								>
 									<Input
 										className={style.searchInput}
@@ -224,13 +225,13 @@ class Home extends Component {
 							<BItem2 bgColor="#5A5A5A" title="文件上传" type="upload" desc="this is a good idea ! like to !" pathData={{pathname:'/upload'}}/>
 						</Col>
 						<Col lg={{ span: 6 }} sm={{span: 12}}>
-							<BItem2 bgColor="#323232" title="HelloWord" type="user" desc="this is a good idea ! like to !"/>
+							<BItem2 bgColor="#323232" title="统计分析" type="bar-chart" desc="this is a good idea ! like to !" pathData={{pathname:'/analyze'}}/>
 						</Col>
 						<Col lg={{ span: 6 }} sm={{span: 12}}>
-							<BItem2 bgColor="#5A5A5A" title="HelloWord" type="heart" desc="this is a good idea ! like to !"/>
+							<BItem2 bgColor="#5A5A5A" title="精华" type="heat-map" desc="this is a good idea ! like to !" pathData={{pathname:'/leader'}}/>
 						</Col>
 						<Col lg={{ span: 6 }} sm={{span: 12}}>
-							<BItem2 bgColor="#323232" title="HelloWord" type="cloud" desc="this is a good idea ! like to !"/>
+							<BItem2 bgColor="#323232" title="标签云" type="tags" desc="this is a good idea ! like to !" pathData={{pathname:'/tags'}}/>
 						</Col>
 					</Row>
 				</Content>

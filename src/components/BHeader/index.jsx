@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Row,Col,Icon } from "antd";
 const { Header } = Layout;
 import { Link, withRouter } from "react-router-dom";
 
@@ -10,6 +10,11 @@ class BHeader extends Component {
 			<Header className>
 				<div className={style.logo}>
 					<Link to="/">Search Engine</Link>
+				</div>
+				
+				<div style={{float: 'right'}}>
+						<Icon type="user"/>
+						个人中心
 				</div>
 				<Menu
 					theme="dark"
