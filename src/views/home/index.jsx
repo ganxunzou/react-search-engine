@@ -53,7 +53,7 @@ class Home extends Component {
 			<Layout style={{height: '100%'}}>
 				<div className={style.container}>
 					<div className={style.logo}>
-						Search Engine
+						Search EngineFFfAffafaaffffafff
 					</div>
 					<div  className={style.search} >
 					<AutoComplete style={{width: '100%'}}
