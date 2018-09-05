@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import { Chart, Axis, Tooltip, Geom } from "bizcharts";
-
+import { Collapse } from "antd";
+const Panel = Collapse.Panel;
 import HistoryArea from "./historyArea";
 import OnlinePie from "./onlinePie";
-import { Collapse } from "antd";
-
-const Panel = Collapse.Panel;
 
 class UserOnline extends Component {
 	render() {

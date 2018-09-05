@@ -1,27 +1,35 @@
 import React, { Component } from "react";
-//import ReactWordCloud from "react-wordcloud";
-
-const words = [
-	{ word: "hello", value: 3 },
-	{ word: "world", value: 1 },
-	{ word: "github", value: 1 },
-	{ word: "code", value: 1 }
-];
-
-const WORD_COUNT_KEY = "value";
-const WORD_KEY = "word";
+import { Collapse } from "antd";
+const Panel = Collapse.Panel;
+import CategoryCloud from "./CategoryCloud";
+import TagCloud from "./TagCloud";
 
 class TagView extends Component {
 	render() {
 		return (
-			<div>
-				{/* <div style={{ width: 600, height: 400 }}>
-					<ReactWordCloud
-						words={words}
-						wordCountKey={WORD_COUNT_KEY}
-						wordKey={WORD_KEY}
-					/>
-				</div> */}
+			<div style={{ maxWidth: "1200px", margin: "auto" }}>
+				<Collapse bordered={false} defaultActiveKey={["1", "2"]}>
+					<Panel
+						header={
+							<div style={{ fontSize: "16px", color: "#939393" }}>
+								文档分类云
+							</div>
+						}
+						key="1"
+					>
+						<CategoryCloud />
+					</Panel>
+					<Panel
+						header={
+							<div style={{ fontSize: "16px", color: "#939393" }}>
+								文档标签云
+							</div>
+						}
+						key="2"
+					>
+						<TagCloud />
+					</Panel>
+				</Collapse>
 			</div>
 		);
 	}
