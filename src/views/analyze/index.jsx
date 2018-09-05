@@ -1,18 +1,36 @@
 import React, { Component } from "react";
-
 import { Layout, Menu, Icon } from "antd";
 const { Sider, Content } = Layout;
 const { SubMenu } = Menu;
+import { Switch, Route, withRouter } from "react-router-dom";
+
+import Online from "./users/online";
+
 class AnalyzeView extends Component {
+
+	componentWillMount(){
+		this.props.history.push({
+			pathname: '/analyze/users/online',
+			state: { }
+		});
+	}
+	menuClick=({ item, key, keyPath })=>{
+		this.props.history.push({
+			pathname: key,
+			state: { }
+		});
+	}
+
 	render() {
 		return (
-			<Layout style={{height: '100%', background: '#fff'}}>
+			<Layout style={{ height: "100%", background: "#fff" }}>
 				<Sider width={200}>
-					<Menu
+					<Menu 
 						mode="inline"
-						defaultSelectedKeys={["1"]}
-						defaultOpenKeys={["sub1","sub2","sub3"]}
+						defaultSelectedKeys={["/analyze/users/online"]}
+						defaultOpenKeys={["sub1", "sub2", "sub3"]}
 						style={{ height: "100%", borderRight: 0 }}
+						onClick={this.menuClick}
 					>
 						<SubMenu
 							key="sub1"
@@ -23,9 +41,8 @@ class AnalyzeView extends Component {
 								</span>
 							}
 						>
-							<Menu.Item key="1">在线用户</Menu.Item>
-							<Menu.Item key="2">用户活跃度</Menu.Item>
-							<Menu.Item key="3">文档分享概况</Menu.Item>
+							<Menu.Item key="/analyze/users/online">用户概览</Menu.Item>
+							<Menu.Item key="/analyze/users/share">文档分享概况</Menu.Item>
 						</SubMenu>
 						<SubMenu
 							key="sub2"
@@ -62,10 +79,13 @@ class AnalyzeView extends Component {
 							padding: 24,
 							margin: 0,
 							minHeight: 280,
-							height: '100%'
+							height: "100%"
 						}}
 					>
-						Content
+						<Switch>
+							<Route exact path="/analyze/users/online" component={Online} />
+							<Route exact path="/analyze/users/share" component={Online} />
+						</Switch>
 					</Content>
 				</Layout>
 			</Layout>
@@ -73,4 +93,4 @@ class AnalyzeView extends Component {
 	}
 }
 
-export default AnalyzeView;
+export default withRouter(AnalyzeView);

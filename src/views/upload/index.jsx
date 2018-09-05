@@ -16,10 +16,7 @@ const { Header } = Layout;
 const Option = Select.Option;
 const FormItem = Form.Item;
 const { TextArea } = Input;
-import { Link } from "react-router-dom";
 import style from "./index.less";
-
-import BHeader from "../../components/BHeader";
 
 const props = {
 	name: "file",

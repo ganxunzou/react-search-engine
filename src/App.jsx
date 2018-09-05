@@ -1,8 +1,6 @@
 import React from "react";
-import { Layout } from "antd";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch, withRoute } from "react-router-dom";
 
-const { Footer } = Layout;
 import Home from "./views/home";
 import Upload from "./views/Upload";
 import SearchList from "./views/searchlist";
@@ -11,6 +9,7 @@ import Leader from "./views/leaderboard";
 import Analyze from "./views/analyze";
 
 import BHeader from "./components/BHeader";
+import BFooter from "./components/BFooter";
 
 export default class App extends React.Component {
 	render() {
@@ -26,12 +25,10 @@ export default class App extends React.Component {
 								<Route exact path="/upload" component={Upload} />
 								<Route exact path="/tags" component={Tags} />
 								<Route exact path="/leader" component={Leader} />
-								<Route exact path="/analyze" component={Analyze} />
+								<Route path="/analyze" component={Analyze} />
 							</Switch>
 						</div>
-						<Footer style={{ textAlign: "center", backgroundColor: "#FFF" }}>
-							版本 ©2018 交通银行软件开发中心（上海）所有
-						</Footer>
+						<BFooter/>
 					</div>
 				</Switch>
 			</HashRouter>

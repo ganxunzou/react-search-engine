@@ -156,20 +156,6 @@ class SearchList extends Component {
 							borderRight: "1px solid #eee"
 						}}
 					>
-						<Row
-							style={{ margin: "20px 0 50px 10px", width: "100%" }}
-							type="flex"
-							align="middle"
-						>
-							<Button
-								type="primary"
-								size="large"
-								icon="upload"
-								onClick={this.uploadClick}
-							>
-								上传文档
-							</Button>
-						</Row>
 						<Row>
 							<Col span={24} style={{ padding: "10px 0 10px 10px" }}>
 								<h3>Document Type</h3>
