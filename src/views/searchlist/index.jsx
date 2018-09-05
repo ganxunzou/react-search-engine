@@ -15,29 +15,30 @@ const CheckBoxGroup = Checkbox.Group;
 import { Link, withRouter } from "react-router-dom";
 
 import ListItem from "../../components/ListItem";
+import RecommendList from "../../components/RecommendList";
+import { Categorys, Tags } from "../../constant";
+
 import style from "./index.less";
 
-const searchKeyWords = [
-	{ label: "PDF", type: "pdf" },
-	{ label: "word", type: "word" },
-	{ label: "excel", type: "excel" }
-];
-
-let allList = searchKeyWords.map(item => {
-	return item.type;
-});
+const tags_section = Tags.slice(0, 8);
 
 const searchResult = [];
 for (let i = 0; i < 100; i++) {
-	let type = "pdf";
-	if (i % 3 == 0) type = "word";
-	if (i % 5 == 0) type = "excel";
+	let category = "1";
+	if (i % 2 == 0) category = "2";
+	if (i % 3 == 0) category = "3";
+	if (i % 5 == 0) category = "4";
+	if (i % 7 == 0) category = "5";
+	if (i % 11 == 0) category = "6";
+	if (i % 13 == 0) category = "7";
+	if (i % 17 == 0) category = "8";
 
 	searchResult.push({
-		type,
+		category,
 		title: 'aa <span style="color:#D0021B">HelloWord</span> XXXXXX' + i,
 		desc: 'xxxx <span style="color:#D0021B">aaaa</span> Xxxxxxx',
-		likes: 999
+		likes: 999,
+		downloads: 999
 	});
 }
 
@@ -52,7 +53,7 @@ class SearchList extends Component {
 		this.state = {
 			checkAll: true,
 			indeterminate: false,
-			checkedList: allList,
+			checkedList: Categorys,
 			searchResult: searchResult,
 			searchFilterResult: searchResult,
 			currentPageResult,
@@ -64,23 +65,22 @@ class SearchList extends Component {
 		this.setState({
 			checkedList,
 			indeterminate:
-				checkedList.length > 0 && checkedList.length < searchKeyWords.length,
-			checkAll: checkedList.length === searchKeyWords.length
+				checkedList.length > 0 && checkedList.length < Categorys.length,
+			checkAll: checkedList.length === Categorys.length
 		});
 
 		this.filterSearchResult(checkedList);
 	};
 
 	filterSearchResult = checkedList => {
-		console.log("object", checkedList);
-		let isAllChecked = checkedList.length == searchKeyWords.length;
+		let isAllChecked = checkedList.length == Categorys.length;
 		let isAllNotChecked = checkedList.length == 0;
 		let { searchResult } = this.state;
 		let searchFilterResult = [];
 		if (!isAllChecked && !isAllNotChecked) {
 			searchFilterResult = searchResult.filter(item => {
 				for (let i = 0; i < checkedList.length; i++) {
-					if (checkedList[i] == item.type) return true;
+					if (checkedList[i].id == item.category) return true;
 				}
 			});
 		}
@@ -99,7 +99,7 @@ class SearchList extends Component {
 	};
 
 	allCheckChange = e => {
-		let checkedList = e.target.checked ? allList : [];
+		let checkedList = e.target.checked ? Categorys : [];
 		this.filterSearchResult(checkedList);
 		this.setState({
 			checkedList,
@@ -146,7 +146,7 @@ class SearchList extends Component {
 			currentPageIndex
 		} = this.state;
 		return (
-			<Layout style={{ height: "100%" }}>
+			<Layout style={{ height: "100%", paddingTop:'10px', background: '#FFF' }}>
 				<Layout>
 					<Sider
 						width={200}
@@ -157,10 +157,10 @@ class SearchList extends Component {
 						}}
 					>
 						<Row>
-							<Col span={24} style={{ padding: "10px 0 10px 10px" }}>
-								<h3>Document Type</h3>
+							<Col span={24} style={{ padding: "20px 0 0 10px" }}>
+								<h2 style={{ color: "#666" }}>分类</h2>
 							</Col>
-							<Col span={24} style={{ padding: "10px 0 0 20px" }}>
+							<Col span={24} style={{ padding: "10px 0 0 10px" }}>
 								<Checkbox
 									checked={checkAll}
 									onChange={this.allCheckChange}
@@ -172,15 +172,40 @@ class SearchList extends Component {
 						</Row>
 						<CheckBoxGroup onChange={this.typeCheckChange} value={checkedList}>
 							<Row>
-								{searchKeyWords &&
-									searchKeyWords.map((item, index) => {
+								{Categorys &&
+									Categorys.map((item, index) => {
 										return (
 											<Col
 												span={24}
-												style={{ padding: "10px 0 0 20px" }}
+												style={{ padding: "10px 0 0 10px" }}
 												key={`key_${index}`}
 											>
-												<Checkbox value={item.type}>{item.label}</Checkbox>
+												<Checkbox value={item}>{item.value}</Checkbox>
+											</Col>
+										);
+									})}
+							</Row>
+						</CheckBoxGroup>
+
+						<Row>
+							<Col span={24} style={{ padding: "30px 0 0 10px" }}>
+								<h2 style={{ color: "#666" }}>标签</h2>
+							</Col>
+							<Col span={24} style={{ padding: "10px 0 0 10px" }}>
+								<Checkbox indeterminate={indeterminate}>ALL</Checkbox>
+							</Col>
+						</Row>
+						<CheckBoxGroup>
+							<Row>
+								{tags_section &&
+									tags_section.map((item, index) => {
+										return (
+											<Col
+												span={24}
+												style={{ padding: "10px 0 0 10px" }}
+												key={`key_${index}`}
+											>
+												<Checkbox value={item}>{item.value}</Checkbox>
 											</Col>
 										);
 									})}
@@ -189,29 +214,67 @@ class SearchList extends Component {
 					</Sider>
 					<Layout style={{ background: "#fff" }}>
 						<Content>
-							<div className={style.search}>
-								<AutoComplete style={{ width: 400 }} />
-							</div>
-							<div className={style.results}>
-								找到 {searchFilterResult.length} 条结果
-							</div>
-							<List
-								style={{ padding: "0 24px 24px" }}
-								bordered={false}
-								dataSource={currentPageResult}
-								renderItem={item => (
-									<List.Item>
-										<ListItem data={item} />
-									</List.Item>
-								)}
-							/>
-							<Pagination
-								style={{ padding: "0 24px" }}
-								pageSize={pageSize}
-								defaultCurrent={currentPageIndex}
-								total={searchFilterResult.length}
-								onChange={this.paginationChange}
-							/>
+							<Row>
+								<Col span={18}>
+									<div className={style.search}>
+										<AutoComplete style={{ width: 500, marginRight: '20px' }} size="large" />
+										<Button type="primary" size="large" >搜索</Button>
+									</div>
+									<div className={style.results}>
+										找到 {searchFilterResult.length} 条结果
+									</div>
+									<List
+										style={{ padding: "0 24px 24px" }}
+										bordered={false}
+										dataSource={currentPageResult}
+										renderItem={item => (
+											<List.Item>
+												<ListItem data={item} />
+											</List.Item>
+										)}
+									/>
+									<Pagination
+										style={{ padding: "0 24px" }}
+										pageSize={pageSize}
+										defaultCurrent={currentPageIndex}
+										total={searchFilterResult.length}
+										onChange={this.paginationChange}
+									/>
+								</Col>
+
+								<Col span={6}>
+									<div style={{ padding: "0 20px" }}>
+										<div
+											style={{
+												height: "80px",
+												lineHeight: "80px",
+												backgroundColor: "#fcf8e3",
+												border: "1px solid #faebcc",
+												borderRadius: 4,
+												textAlign: "center",
+												marginBottom: "20px"
+											}}
+										>
+											这里是一些小小的提示
+										</div>
+
+										<div
+											style={{
+												marginBottom: "20px"
+											}}
+										>
+											<RecommendList title="点赞排行" isLike={true}/>
+										</div>
+										<div
+											style={{
+												marginBottom: "20px"
+											}}
+										>
+											<RecommendList title="下载排行" isLike={false}/>
+										</div>
+									</div>
+								</Col>
+							</Row>
 						</Content>
 					</Layout>
 				</Layout>

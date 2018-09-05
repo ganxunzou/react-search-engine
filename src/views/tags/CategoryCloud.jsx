@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { TagCloud } from "react-tagcloud";
-import {Category} from '../../constant';
+import {Categorys} from '../../constant';
 import {message} from 'antd';
 class CategoryCloud extends Component {
 	render() {
@@ -9,7 +9,7 @@ class CategoryCloud extends Component {
 				<TagCloud
 					minSize={12}
 					maxSize={35}
-					tags={Category}
+					tags={Categorys}
 					onClick={tag => message.success(`'${tag.value}' was selected!`)}
 				/>
 			</div>

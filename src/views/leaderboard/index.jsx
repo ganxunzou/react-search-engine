@@ -3,10 +3,13 @@ import { Tabs, Icon, Row, Col, Collapse } from "antd";
 const Panel = Collapse.Panel;
 
 const TabPane = Tabs.TabPane;
+
+import RecommendList from "../../components/RecommendList";
+
 class Leader extends Component {
 	render() {
 		return (
-			<div style={{ padding: "0 50px", maxWidth: "1200px", margin: "auto" }}>
+			<div style={{ padding: "10px 50px", maxWidth: "1200px", margin: "auto" }}>
 				<Row>
 					<Col span={18}>
 						<Tabs defaultActiveKey="1">
@@ -32,16 +35,37 @@ class Leader extends Component {
 							</TabPane>
 						</Tabs>
 					</Col>
-					<Col span={6} style={{padding: '50px 0 0 20px'}}>
-						<Collapse defaultActiveKey={["1", "2"]} >
-							<Panel header="我的点赞排行" key="1">
-								<p>1111</p>
-							</Panel>
-							<Panel header="我的下载排行" key="2">
-								<p>111</p>
-							</Panel>
-						</Collapse>
-						,
+					<Col span={6}>
+						<div style={{ padding: "0 20px" }}>
+							<div
+								style={{
+									height: "80px",
+									lineHeight: "80px",
+									backgroundColor: "#fcf8e3",
+									border: "1px solid #faebcc",
+									borderRadius: 4,
+									textAlign: "center",
+									marginBottom: "20px"
+								}}
+							>
+								这里是一些小小的提示
+							</div>
+
+							<div
+								style={{
+									marginBottom: "20px"
+								}}
+							>
+								<RecommendList title="点赞排行" isLike={true} />
+							</div>
+							<div
+								style={{
+									marginBottom: "20px"
+								}}
+							>
+								<RecommendList title="下载排行" isLike={false} />
+							</div>
+						</div>
 					</Col>
 				</Row>
 			</div>

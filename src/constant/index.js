@@ -1,12 +1,12 @@
-export const Category =[
-  { value: "需求", count: 30 },
-  { value: "设计", count: 29 },
-  { value: "规格", count: 29 },
-  { value: "技术", count: 27 },
-  { value: "服务", count: 28 },
-  { value: "管理", count: 26 },
-  { value: "行政", count: 25 },
-  { value: "其他", count: 27 },
+export const Categorys =[
+  { value: "需求", count: 30, id:"1" },
+  { value: "设计", count: 29, id:"2" },
+  { value: "规格", count: 29, id:"3" },
+  { value: "技术", count: 27, id:"4" },
+  { value: "服务", count: 28, id:"5" },
+  { value: "管理", count: 26, id:"6" },
+  { value: "行政", count: 25, id:"7" },
+  { value: "其他", count: 27, id:"8" },
 ]
 
 export const Tags =[

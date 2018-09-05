@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import style from './index.less';
+import {Icon} from 'antd';
 
 export default class ListItem extends Component {
 	constructor(props) {
@@ -22,7 +23,10 @@ export default class ListItem extends Component {
 			<div>
 				<div className={style.title} dangerouslySetInnerHTML={{__html: data.title}}></div>
 				<div className={style.desc} dangerouslySetInnerHTML={{__html: data.desc}}></div>
-				<div className={style.likes} >{data.likes} 点赞</div>
+				<div className={style.likeContainer} >
+					<span className={style.like}>{data.likes} <Icon type="like"/></span>
+					<span className={style.like} style={{padding: '0 10px'}}>{data.downloads} <Icon type="download"/></span>
+				</div>
 			</div>
 		);
 	}
