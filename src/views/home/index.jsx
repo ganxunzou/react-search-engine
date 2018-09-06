@@ -11,36 +11,36 @@ import BItem2 from "../../components/BItem2";
 
 const dataSource = [
 	{
-		title: "话题",
+		title: "需求",
 		children: [
 			{
-				title: "AntDesign",
+				title: "New Features",
 				count: 10000
 			},
 			{
-				title: "AntDesign UI",
+				title: "New Features UI",
 				count: 10600
 			}
 		]
 	},
 	{
-		title: "问题",
+		title: "设计",
 		children: [
 			{
-				title: "AntDesign UI 有多好",
+				title: "Sketch ",
 				count: 60100
 			},
 			{
-				title: "AntDesign 是啥",
+				title: "Axure",
 				count: 30010
 			}
 		]
 	},
 	{
-		title: "文章",
+		title: "技术",
 		children: [
 			{
-				title: "AntDesign 是一个设计语言",
+				title: "React",
 				count: 100000
 			}
 		]
@@ -70,23 +70,12 @@ const options = dataSource
 				<Option key={opt.title} value={opt.title}>
 					{opt.title}
 					<span style={{ position: "absolute", right: "16px" }}>
-						{opt.count} 人 关注
+						{opt.count} 人 下载
 					</span>
 				</Option>
 			))}
 		</OptGroup>
-	))
-	.concat([
-		<Option disabled key="all" className="show-all">
-			<a
-				href="https://www.google.com/search?q=antd"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				查看所有结果
-			</a>
-		</Option>
-	]);
+	));
 
 const ItemList = [
 	{ label: "前端技术架构选型", id: "1" },

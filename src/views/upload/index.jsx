@@ -18,6 +18,8 @@ const FormItem = Form.Item;
 const { TextArea } = Input;
 import style from "./index.less";
 
+import { Categorys, Tags } from "../../constant";
+
 const props = {
 	name: "file",
 	multiple: true,
@@ -35,15 +37,13 @@ const props = {
 	}
 };
 
-
 class UploadView extends Component {
-
-	handleSubmit=(e)=>{
+	handleSubmit = e => {
 		e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      console.log('Received values of form: ', values);
-    });
-	}
+		this.props.form.validateFields((err, values) => {
+			console.log("Received values of form: ", values);
+		});
+	};
 
 	render() {
 		let { getFieldDecorator } = this.props.form;
@@ -64,9 +64,14 @@ class UploadView extends Component {
 										rules: [{ required: true, message: "请选择分类" }]
 									})(
 										<Select placeholder="分类" size="large">
-											<Option key="1" value="1">
-												AAA
-											</Option>
+											{Categorys &&
+												Categorys.map((item, index) => {
+													return (
+														<Option key={`key_${index}`} value={item.id}>
+															{item.value}
+														</Option>
+													);
+												})}
 										</Select>
 									)}
 								</FormItem>
@@ -76,10 +81,15 @@ class UploadView extends Component {
 									{getFieldDecorator("tags", {
 										rules: [{ required: true, message: "请选标签" }]
 									})(
-										<Select placeholder="标签" size="large">
-											<Option key="1" value="1">
-												AAA
-											</Option>
+										<Select placeholder="标签" size="large" mode="tags" defaultValue={['react', 'java']}>
+											{Tags &&
+												Tags.map((item, index) => {
+													return (
+														<Option key={`key_${index}`} value={item.value}>
+															{item.value}
+														</Option>
+													);
+												})}
 										</Select>
 									)}
 								</FormItem>
@@ -114,8 +124,8 @@ class UploadView extends Component {
 								</Dragger>
 							</Col>
 						</Row>
-						<Row type="flex" justify="right" style={{paddingTop: '20px'}}>
-							<Col style={{textAlign: 'right'}} span={24}>
+						<Row type="flex" justify="right" style={{ paddingTop: "20px" }}>
+							<Col style={{ textAlign: "right" }} span={24}>
 								<Button type="primary" htmlType="submit" size="large">
 									文件上传
 								</Button>

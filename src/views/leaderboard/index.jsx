@@ -1,15 +1,34 @@
 import React, { Component } from "react";
-import { Tabs, Icon, Row, Col, Collapse } from "antd";
+import { Tabs, Icon, Row, Col, Collapse,List } from "antd";
 const Panel = Collapse.Panel;
-
 const TabPane = Tabs.TabPane;
-
 import RecommendList from "../../components/RecommendList";
+import ListItem from "../../components/ListItem";
+
+const searchResult =[];
+for (let i = 0; i < 10; i++) {
+	let category = "1";
+	if (i % 2 == 0) category = "2";
+	if (i % 3 == 0) category = "3";
+	if (i % 5 == 0) category = "4";
+	if (i % 7 == 0) category = "5";
+	if (i % 11 == 0) category = "6";
+	if (i % 13 == 0) category = "7";
+	if (i % 17 == 0) category = "8";
+
+	searchResult.push({
+		category,
+		title: 'aa <span style="color:#D0021B">HelloWord</span> XXXXXX' + i,
+		desc: 'xxxx <span style="color:#D0021B">aaaa</span> Xxxxxxx',
+		likes: 999,
+		downloads: 999
+	});
+}
 
 class Leader extends Component {
 	render() {
 		return (
-			<div style={{ padding: "10px 50px", maxWidth: "1200px", margin: "auto" }}>
+			<div style={{ padding: "10px 50px", maxWidth: "1400px", margin: "auto" }}>
 				<Row>
 					<Col span={18}>
 						<Tabs defaultActiveKey="1">
@@ -21,7 +40,16 @@ class Leader extends Component {
 								}
 								key="1"
 							>
-								Tab 1
+								<List
+										style={{ padding: "0 24px 24px" }}
+										bordered={false}
+										dataSource={searchResult}
+										renderItem={item => (
+											<List.Item>
+												<ListItem data={item} />
+											</List.Item>
+										)}
+									/>
 							</TabPane>
 							<TabPane
 								tab={
@@ -31,7 +59,16 @@ class Leader extends Component {
 								}
 								key="2"
 							>
-								Tab 2
+								<List
+										style={{ padding: "0 24px 24px" }}
+										bordered={false}
+										dataSource={searchResult}
+										renderItem={item => (
+											<List.Item>
+												<ListItem data={item} />
+											</List.Item>
+										)}
+									/>
 							</TabPane>
 						</Tabs>
 					</Col>
