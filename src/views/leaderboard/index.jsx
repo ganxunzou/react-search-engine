@@ -62,7 +62,7 @@ class Leader extends Component {
 								<List
 										style={{ padding: "0 24px 24px" }}
 										bordered={false}
-										dataSource={searchResult}
+										dataSource={searchResult	}
 										renderItem={item => (
 											<List.Item>
 												<ListItem data={item} />
