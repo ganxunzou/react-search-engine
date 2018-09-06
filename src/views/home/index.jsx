@@ -144,7 +144,7 @@ class Home extends Component {
 					</div>
 				</div> */}
 				<Content style={{ background: "#fff", height: "100%" }}>
-					<div style={{ height: "260px", background: "url(/banner.jpg)" }}>
+					<div style={{ height: "260px", background: "url(/img/banner.jpg)" }}>
 						<h1
 							style={{
 								paddingTop: "40px",
