@@ -45,9 +45,10 @@ class Labelline extends React.Component {
       }
     };
     return (
-      <div>
+      <div >
         <Chart
-          height={window.innerHeight}
+          width={600}
+          height={400}
           data={dv}
           scale={cols}
           padding={[80, 100, 80, 80]}

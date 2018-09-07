@@ -62,7 +62,8 @@ function getComponent(data) {
       return (
         <div>
           <Chart
-            height={window.innerHeight - 50}
+            width={600}
+            height={400}
             data={dv}
             padding={[40, 40, 40, 80]}
             scale={scale}
@@ -161,7 +162,7 @@ class Arealarge extends React.Component {
   render() {
     const SliderChart = getComponent(data);
     return (
-      <div>
+      <div style={{width: '500px'}}>
         <SliderChart />
       </div>
     );
