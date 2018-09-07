@@ -10,7 +10,9 @@ class Item extends Component {
 						width: 32,
             height: 34,
 						float: "left",
-						background: "#C8E9DE"
+						background: "#C8E9DE",
+						marginTop: '4px'
+
 					}}
 				>
 					<p

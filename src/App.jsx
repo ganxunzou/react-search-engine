@@ -4,6 +4,7 @@ import { HashRouter, Route, Switch, withRoute } from "react-router-dom";
 import Home from "./views/home";
 import Upload from "./views/Upload";
 import SearchList from "./views/searchlist";
+import Detail from "./views/Detail";
 import Tags from "./views/tags";
 import Leader from "./views/leaderboard";
 import Analyze from "./views/analyze";
@@ -22,6 +23,7 @@ export default class App extends React.Component {
 						<div style={{minHeight: '680px'}}>
 							<Switch>
 								<Route exact path="/search" component={SearchList} />
+								<Route exact path="/search/detail" component={Detail} />
 								<Route exact path="/upload" component={Upload} />
 								<Route exact path="/tags" component={Tags} />
 								<Route exact path="/leader" component={Leader} />
