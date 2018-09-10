@@ -60,7 +60,7 @@ class Donut extends React.Component {
     return (
       <div>
         <Chart
-          height={300}
+          height={this.props.height ?this.props.height : window.innerHeight-100}
           data={dv}
           scale={cols}
           padding={[0, 0, 0, 0]}

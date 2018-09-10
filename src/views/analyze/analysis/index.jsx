@@ -58,28 +58,28 @@ class AnalysisView extends Component {
 						lg={{ span: 12 }}
 						style={{ marginBottom: "16px" }}
 					>
-						<Item />
+						<Item title="用户总量" today="今日在线"/>
 					</Col>
 					<Col
 						xl={{ span: 6 }}
 						lg={{ span: 12 }}
 						style={{ marginBottom: "16px" }}
 					>
-						<Item />
+						<Item title="文档总量" today="今日新增"/>
 					</Col>
 					<Col
 						xl={{ span: 6 }}
 						lg={{ span: 12 }}
 						style={{ marginBottom: "16px" }}
 					>
-						<Item />
+						<Item title="搜索总量" today="今日搜索"/>
 					</Col>
 					<Col
 						xl={{ span: 6 }}
 						lg={{ span: 12 }}
 						style={{ marginBottom: "16px" }}
 					>
-						<Item />
+						<Item title="标签总量" today="今日新增"/>
 					</Col>
 				</Row>
 				<Row style={{ background: "#fff", marginBottom: "16px" }}>
@@ -188,7 +188,7 @@ class AnalysisView extends Component {
 								热门搜索
 							</div>
 							<di>
-								<DocStatistics />
+								<DocStatistics height={300}/>
 							</di>
 						</div>
 					</Col>

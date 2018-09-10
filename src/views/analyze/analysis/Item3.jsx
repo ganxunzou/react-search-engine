@@ -7,7 +7,7 @@ class Item extends Component {
 		return (
 			<div className={style.container}>
 				<div style={{ color: "rgba(0,0,0,.45)", fontSize: "14px" }}>
-					<span>{this.props.title}</span>
+					<span>搜索总量</span>
 					<Icon
 						style={{ float: "right", paddingTop: "5px" }}
 						type="question-circle"
@@ -26,8 +26,8 @@ class Item extends Component {
 				</div>
 				<Divider style={{ margin: "15px 0" }} />
 				<div style={{ height: "30px" }}>
-					<span>{this.props.today}：</span>
-					<span> 12,423 </span>
+					<span>今日搜索</span>
+					<span>12,423 </span>
 				</div>
 			</div>
 		);

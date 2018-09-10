@@ -8,8 +8,8 @@ class UploadChartView extends Component {
 	render() {
 		return (
 			<div>
-				<Row>
-          <Col xl={{ span: 12 }}>
+				<Row gutter={16}>
+          <Col xl={{ span: 12 }} style={{marginBottom: '16px'}}>
 						<Collapse bordered={false} defaultActiveKey={["1"]}>
 							<Panel
 								header={
@@ -25,7 +25,7 @@ class UploadChartView extends Component {
 							</Panel>
 						</Collapse>
 					</Col>
-          <Col xl={{ span: 12 }}>
+          <Col xl={{ span: 12 }} style={{marginBottom: '16px'}}>
 						<Collapse bordered={false} defaultActiveKey={["1"]}>
 							<Panel
 								header={
