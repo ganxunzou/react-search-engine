@@ -14,12 +14,12 @@ class UploadChartView extends Component {
 							<Panel
 								header={
 									<div style={{ fontSize: "16px", color: "#939393" }}>
-										分享概况（本年）
+										中心年度分享概况
 									</div>
 								}
 								key="1"
 							>
-								<div style={{ height: "500px" }}>
+								<div style={{ height: "400px" }}>
 									<PolyMonth />
 								</div>
 							</Panel>
@@ -30,12 +30,44 @@ class UploadChartView extends Component {
 							<Panel
 								header={
 									<div style={{ fontSize: "16px", color: "#939393" }}>
-										分享概况（历年）
+										中心历年分享概况
 									</div>
 								}
 								key="1"
 							>
-								<div style={{ height: "500px" }}>
+								<div style={{ height: "400px" }}>
+									<PolyYear />
+								</div>
+							</Panel>
+						</Collapse>
+					</Col>
+					<Col xl={{ span: 12 }}>
+						<Collapse bordered={false} defaultActiveKey={["1"]}>
+							<Panel
+								header={
+									<div style={{ fontSize: "16px", color: "#939393" }}>
+										部门年度分享概况
+									</div>
+								}
+								key="1"
+							>
+								<div style={{ height: "400px" }}>
+									<PolyYear />
+								</div>
+							</Panel>
+						</Collapse>
+					</Col>
+					<Col xl={{ span: 12 }}>
+						<Collapse bordered={false} defaultActiveKey={["1"]}>
+							<Panel
+								header={
+									<div style={{ fontSize: "16px", color: "#939393" }}>
+									部门历年分享概况
+									</div>
+								}
+								key="1"
+							>
+								<div style={{ height: "400px" }}>
 									<PolyYear />
 								</div>
 							</Panel>

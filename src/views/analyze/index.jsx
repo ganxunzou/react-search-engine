@@ -8,12 +8,14 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import UserActive from "./users/active";
 import UserStatistics from "./users/statistics";
 import DocStatistics from "./doc/statics";
-
 import Online from "./users/online";
 import UploadChartView from "./doc/upload";
 import Ship from "./search/ship";
 import Ship2 from "./search/ship2";
 import HotView from "./search/hot";
+
+import AnalysisView from "./analysis";
+
 
 class AnalyzeView extends Component {
 
@@ -32,7 +34,7 @@ class AnalyzeView extends Component {
 
 	render() {
 		return (
-			<Layout style={{ height: "100%", background: "#fff" }}>
+			<Layout style={{ height: "100%", background: "#ccc" }}>
 				<Sider width={200}>
 					<Menu 
 						mode="inline"
@@ -46,12 +48,13 @@ class AnalyzeView extends Component {
 							title={
 								<span>
 									<Icon type="user" />
-									用户
+									{/* 用户 */}Dashboard
 								</span>
 							}
 						>
-							<Menu.Item key="/analyze/users/active">用户活跃度</Menu.Item>
-							<Menu.Item key="/analyze/users/statistics">用户统计</Menu.Item>
+						 <Menu.Item key="/analyze/analysis">分析页</Menu.Item>
+							{/* <Menu.Item key="/analyze/users/active">用户活跃度</Menu.Item>
+							<Menu.Item key="/analyze/users/statistics">用户统计</Menu.Item> */}
 						</SubMenu>
 						<SubMenu
 							key="sub2"
@@ -65,8 +68,7 @@ class AnalyzeView extends Component {
 							<Menu.Item key="/analyze/doc/statistics">文档概览</Menu.Item>
 							<Menu.Item key="/analyze/doc/upload">上传概览</Menu.Item>
 							<Menu.Item key="/analyze/doc/download">下载概概览</Menu.Item>
-							<Menu.Item key="7">部门概况</Menu.Item>
-							<Menu.Item key="8">部门好评文档概况</Menu.Item>
+							<Menu.Item key="8">精华</Menu.Item>
 						</SubMenu>
 						<SubMenu
 							key="sub3"
@@ -86,7 +88,7 @@ class AnalyzeView extends Component {
 				<Layout style={{ padding: "0 0 0 1px" }}>
 					<Content
 						style={{
-							background: "#fff",
+							background: "#eee",
 							padding: 24,
 							margin: 0,
 							minHeight: 280,
@@ -94,6 +96,7 @@ class AnalyzeView extends Component {
 						}}
 					>
 						<Switch>
+							<Route exact path="/analyze/analysis" component={AnalysisView} />
 							<Route exact path="/analyze/users/active" component={UserActive} />
 							<Route exact path="/analyze/users/statistics" component={UserStatistics} />
 							<Route exact path="/analyze/doc/statistics" component={DocStatistics} />

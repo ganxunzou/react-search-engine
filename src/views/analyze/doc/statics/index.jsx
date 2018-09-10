@@ -22,38 +22,25 @@ class Donut extends React.Component {
     const { Html } = Guide;
     const data = [
       {
-        item: "需求",
+        item: "事例一",
         count: 40
       },
       {
-        item: "设计",
+        item: "事例二",
         count: 21
       },
       {
-        item: "规格",
+        item: "事例三",
         count: 17
       },
       {
-        item: "技术",
+        item: "事例四",
         count: 13
       },
       {
-        item: "服务",
-        count: 20
-      },
-      {
-        item: "管理",
-        count: 30
-      },
-      {
-        item: "行政",
-        count: 40
-      },
-      {
-        item: "其他",
+        item: "事例五",
         count: 9
       }
-
     ];
     const dv = new DataView();
     dv.source(data).transform({
@@ -73,10 +60,10 @@ class Donut extends React.Component {
     return (
       <div>
         <Chart
-          height={window.innerHeight}
+          height={300}
           data={dv}
           scale={cols}
-          padding={[80, 100, 80, 80]}
+          padding={[0, 0, 0, 0]}
           forceFit
         >
           <Coord type={"theta"} radius={0.75} innerRadius={0.6} />

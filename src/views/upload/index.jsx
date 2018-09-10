@@ -48,8 +48,8 @@ class UploadView extends Component {
 	render() {
 		let { getFieldDecorator } = this.props.form;
 		return (
-			<Layout style={{ height: "100%" }}>
-				<Layout style={{ padding: "20px 50px" }}>
+			<Layout style={{ height: "100%"}}>
+				<div style={{padding: '20px 50px', maxWidth: "1400px", width:'100%', margin: "auto"}}>
 					<h2 className={style.title}>文件上传</h2>
 					<Form onSubmit={this.handleSubmit}>
 						<FormItem>
@@ -81,7 +81,12 @@ class UploadView extends Component {
 									{getFieldDecorator("tags", {
 										rules: [{ required: true, message: "请选标签" }]
 									})(
-										<Select placeholder="标签" size="large" mode="tags" defaultValue={['react', 'java']}>
+										<Select
+											placeholder="标签"
+											size="large"
+											mode="tags"
+											defaultValue={["react", "java"]}
+										>
 											{Tags &&
 												Tags.map((item, index) => {
 													return (
@@ -127,16 +132,12 @@ class UploadView extends Component {
 						<Row type="flex" justify="right" style={{ paddingTop: "20px" }}>
 							<Col style={{ textAlign: "right" }} span={24}>
 								<Button type="primary" htmlType="submit" size="large">
-									文件上传
+									上 传
 								</Button>
 							</Col>
 						</Row>
 					</Form>
-					{/* <div>
-						<h3 className={style.title}>文档上传</h3>		
-					</div>
-					 */}
-				</Layout>
+				</div>
 			</Layout>
 		);
 	}

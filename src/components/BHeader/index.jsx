@@ -37,7 +37,7 @@ class BHeader extends Component {
 						<Link to="/tags">标签云</Link>
 					</Menu.Item>
 					<Menu.Item key="upload">
-						<Link to="/upload">上传文件</Link>
+						<Link to="/upload">文件上传</Link>
 					</Menu.Item>
 					<Menu.Item key="leader">
 						<Link to="/leader">精华</Link>
